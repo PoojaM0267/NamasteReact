@@ -1,0 +1,12 @@
+1. What is jsx?
+Answer -  JSX is html like syntax in JS. We can create React element and write React code in JSX.Answer
+
+2. Superpowers of JSX: 
+Answer: 1. Prevents XSS 
+        2. Makes HTML writing easier. 
+        3. 
+
+3. Role of type attribute in Script tag? What options can I use there?
+Answer: 
+
+4. 

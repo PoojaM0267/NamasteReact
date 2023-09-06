@@ -24,4 +24,23 @@
 
 
 
+# Food App Strucure
+  * Components:
+         * Header
+         * - Logo
+         * - Nav Items
+         * Body 
+         *  - Search Bar
+         *  - Restaurant card Container
+         *      - Restaurant Cards
+         *              - Image
+         *              - Name 
+         *              - Star rating, Cuisine, delivery time
+         * 
+         * Footer
+         *  - Copyright text
+         *  - Links
+         *  - Address
+         *  - Contact 
+        
 
