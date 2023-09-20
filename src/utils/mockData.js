@@ -17,7 +17,7 @@ const resList = [{
     resName: "Cafe Coffee Day", 
     cuisine: "Coffee, Snacks",
     deliveryTime: "25 mins",
-    starRating: "4.2"
+    starRating: "3.8"
 },
 { 
     id:104,
@@ -25,6 +25,20 @@ const resList = [{
     cuisine: "Subs, Fast Food",
     deliveryTime: "35 mins",
     starRating: "4.1"
+},
+{ 
+    id:105,
+    resName: "Empires", 
+    cuisine: "Chinese, North Indian",
+    deliveryTime: "29 mins",
+    starRating: "3.9"
+},
+{ 
+    id:106,
+    resName: "Food Point", 
+    cuisine: "Momos, Fast Food",
+    deliveryTime: "20 mins",
+    starRating: "3.2"
 }
 ]
 
