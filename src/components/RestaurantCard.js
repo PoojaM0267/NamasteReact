@@ -4,6 +4,9 @@ import {CDN_URL} from "../utils/constants";
 const RestaurantCard = (props) => {
 
     const {resData} = props;
+
+
+
     //const {resName, cuisine, starRating, deliveryTime} = resData;
 
     const {
@@ -17,6 +20,7 @@ const RestaurantCard = (props) => {
         aggregatedDiscountInfo,
       } = resData;
 
+
 //     return (
 //             <div className="res-card">
 //                     <img className="res-logo" alt="res logo" src="https://b.zmtcdn.com/data/pictures/1/20417701/a97231a7c99e1ef71d546d50581807b4_o2_featured_v2.jpg?output-format=webp"/>
@@ -27,42 +31,41 @@ const RestaurantCard = (props) => {
 //             </div>
 //     )
 
+// console.log(name);
+
+
+
 return (
         <div className="res-card">
           <img
-            src={
-              CDN_URL +
-              (cloudinaryImageId === ""
-                ? "s6fhwzl0tss0vgrqvcid"
-                : cloudinaryImageId)
-            }
+            src={CDN_URL + cloudinaryImageId }
             alt="" height="100px" width="150px"
             className="res-logo"
           />
-          <div className="res-details px-2">
-            <h4 className="font-medium text-base text-black">{name}</h4>
+          
+
+           {/* <img className="res-logo" alt="res logo" src="https://b.zmtcdn.com/data/pictures/1/20417701/a97231a7c99e1ef71d546d50581807b4_o2_featured_v2.jpg?output-format=webp"/> */}
+          
+          <div className="res-details">
+            <h4 >{name}</h4>
             <span className="">{cuisines.join(", ")}</span>
-            <div className="flex justify-between items-center my-2 font-medium">
-              <div className="flex items-center gap-1 px-1 text-white bg-green-500 font-semibold">
-                <span className="text-[0.6rem]">&#9733;</span>
-                <span className="text-[0.6rem]">
+            <div >
+              <div >
+                <span>&#9733;</span>
+                <span>
                   {avgRating === "--" ? "4.2" : avgRating}
                 </span>
               </div>
-              <div className="w-[3px] h-[3px] rounded-full bg-black"></div>
-              <span className="">{slaString}</span>              
+              <div ></div>
+              <span>{slaString}</span>              
               <div className="res-price">
                 <span className="text-xs">
-                 ₹{costForTwo / 100} FOR TWO
+                 {/* ₹{costForTwo / 100} FOR TWO */}
+                 {costForTwo}
                 </span>
               </div>
             </div>
-            <div className="flex border-t pt-4 gap-2  font-semibold"></div>
-            <span className="text-[#a0522d] text-center">
-              {!aggregatedDiscountInfo?.shortDescriptionList[0]?.meta
-                ? "30% off | Use NEWFUD"
-                : aggregatedDiscountInfo?.shortDescriptionList[0]?.meta}
-            </span>
+            
           </div>
         </div>
       );
