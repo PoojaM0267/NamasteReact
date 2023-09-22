@@ -20,13 +20,10 @@ const Body = () => {
                       );
                       const json = await data.json();
                       console.log(json?.data?.cards);
-
-                      //setRestaurantList(json.data.cards[2].data.data.cards);
                      
                      setRestaurantList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
                      setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-                     // setRestaurantList(resList);
-                       // debugger;
+                     
                       console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
                       console.log(restaurantList);
 
