@@ -6,9 +6,6 @@ const RestaurantCard = (props) => {
     const {resData} = props;
 
 
-
-    //const {resName, cuisine, starRating, deliveryTime} = resData;
-
     const {
         cloudinaryImageId,
         name,
@@ -19,20 +16,6 @@ const RestaurantCard = (props) => {
         costForTwo,
         aggregatedDiscountInfo,
       } = resData;
-
-
-//     return (
-//             <div className="res-card">
-//                     <img className="res-logo" alt="res logo" src="https://b.zmtcdn.com/data/pictures/1/20417701/a97231a7c99e1ef71d546d50581807b4_o2_featured_v2.jpg?output-format=webp"/>
-//                     <h3>{resName}</h3>
-//                     <h4>{cuisine}</h4>
-//                     <h4>{starRating } stars </h4>
-//                     <h4>{deliveryTime}</h4>
-//             </div>
-//     )
-
-// console.log(name);
-
 
 
 return (
@@ -59,7 +42,6 @@ return (
               <span>{slaString}</span>              
               <div className="res-price">
                 <span className="text-xs">
-                 {/* ₹{costForTwo / 100} FOR TWO */}
                  {costForTwo}
                 </span>
               </div>
@@ -68,6 +50,26 @@ return (
           </div>
         </div>
       );
+};
+
+// Higher Order Components
+// imput: rest card 
+// output: promoted rest card
+
+export const withPromotedLabel = (RestaurantCard) => {
+  // returning component
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 ml-4 p-2 rounded-lg">Top Rated</label>
+        <RestaurantCard {...props}/>
+      </div>
+    );
+  }
+
 }
+
+
+
 
 export default RestaurantCard;

@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel } from "./RestaurantCard";
 import resList from "../utils/mockData2";
 import {useState, useEffect} from 'react';
 import Shimmer from "./Shimmer";
@@ -14,7 +14,10 @@ const Body = () => {
         const {restaurantList, filteredRestaurantList} = useRestaurantList();
         const onlineStatus = useOnlineStatus();
 
-        console.log("Render Called");
+        const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+        //console.log("Render Called " );
+        //console.log(restaurantList);
 
         if(!onlineStatus) return <h1>
                         Looks like you are Offline !!! Please check your internet connection.
@@ -59,7 +62,9 @@ const Body = () => {
                     {
                         filteredRestaurantList?.map(restaurant =>
                                  <Link to={"/restaurants/" + restaurant?.info?.id} key={restaurant?.info?.id}>
-                                        <RestaurantCard  resData={restaurant?.info}/> 
+                                        {
+                                                restaurant?.info?.avgRating > 4.1 ? <RestaurantCardPromoted resData={restaurant?.info}/> : <RestaurantCard resData={restaurant?.info}/>
+                                        } 
                                 </Link>
                                  )
 
