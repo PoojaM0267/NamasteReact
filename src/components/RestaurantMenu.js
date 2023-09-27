@@ -1,34 +1,32 @@
 import {useEffect, useState} from 'react';
 import Shimmer from './Shimmer';
 import { useParams } from 'react-router-dom';
-import {MENU_API} from '../utils/constants';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setResInfo] = useState(null);
+    //const [resInfo, setResInfo] = useState(null);
 
     const {resId}  = useParams();
 
-    useEffect(() => {
-        fetchMenu();
-    }, []); 
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []); 
 
 
-    const fetchMenu = async () => {
-        const data = await fetch(MENU_API + resId);
-        //debugger;
-        const json = await data.json();
-        // console.log(jsonData);        
-        // console.log(jsonData.data?.cards[0]?.card?.card?.info);
-        setResInfo(json.data);
-        //setResInfo(jsonData.data?.cards[0]?.card?.card?.info);
-        console.log(resInfo);
+    // const fetchMenu = async () => {
+    //     const data = await fetch(MENU_API + resId);
+    //     const json = await data.json();
+    //     setResInfo(json.data);
+    //     console.log(resInfo);
 
-    }
+    // }
+
+
+    // custom hooks : hooks are just utility functions like helpers
+    const resInfo = useRestaurantMenu(resId);
 
     if (resInfo === null) return <Shimmer />;
-
-   // console.log(resInfo?.name);
    //const {name, cuisines, costForTwoMessage, avgRatingString, } = resInfo;
 
    console.log(resInfo?.cards[0]?.card?.card?.info);

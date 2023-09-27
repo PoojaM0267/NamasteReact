@@ -3,38 +3,22 @@ import resList from "../utils/mockData2";
 import {useState, useEffect} from 'react';
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom';
+import useRestaurantList from "../utils/useRestaurantsList";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body = () => {
 
-    const [restaurantList, setRestaurantList] = useState([]);
-    const [filteredRestaurantList, setFilteredRestaurant] = useState([]);
-    const [searchText, setSearchText] = useState("");
-    
-        useEffect(() => {
-                console.log("UseEffect Called");
-                fetchData();
-        }, [] );
-
-        const fetchData = async () => {
-                const data = await fetch(
-                        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-                      );
-                      const json = await data.json();
-                     // console.log(json?.data?.cards);
-                     
-                     setRestaurantList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-                     setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-                     
-                      console.log(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-                      console.log(restaurantList);
-
+        const [searchText, setSearchText] = useState("");
         
-        };
-
+        const {restaurantList, filteredRestaurantList} = useRestaurantList();
+        const onlineStatus = useOnlineStatus();
 
         console.log("Render Called");
 
+        if(!onlineStatus) return <h1>
+                        Looks like you are Offline !!! Please check your internet connection.
+                </h1>
 
         return restaurantList.length === 0 ? <Shimmer /> : (
             <div className="body">
