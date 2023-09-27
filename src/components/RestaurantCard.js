@@ -36,18 +36,17 @@ const RestaurantCard = (props) => {
 
 
 return (
-        <div className="res-card">
+        <div className="m-4 p-4 w-[300px] bg-gray-100 rounded-lg hover:bg-gray-200" >
           <img
             src={CDN_URL + cloudinaryImageId }
-            alt="" height="100px" width="150px"
-            className="res-logo"
+            alt="" 
+            className="w-[250px] h-[150px] rounded-lg"
           />
           
 
-           {/* <img className="res-logo" alt="res logo" src="https://b.zmtcdn.com/data/pictures/1/20417701/a97231a7c99e1ef71d546d50581807b4_o2_featured_v2.jpg?output-format=webp"/> */}
-          
-          <div className="res-details">
-            <h4 >{name}</h4>
+           
+          <div className="py-4">
+            <h4 className="font-bold py-2 text-lg">{name}</h4>
             <span className="">{cuisines.join(", ")}</span>
             <div >
               <div >
