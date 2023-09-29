@@ -1,6 +1,7 @@
 import RestaurantCard, {withPromotedLabel } from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
 import resList from "../utils/mockData2";
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom';
 import useRestaurantList from "../utils/useRestaurantsList";
@@ -16,14 +17,14 @@ const Body = () => {
 
         const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
-        //console.log("Render Called " );
-        //console.log(restaurantList);
+        const {loggedInUser, setUserName } = useContext(UserContext);
 
-        if(!onlineStatus) return <h1>
+        if(!onlineStatus) return (
+                <h1>
                         Looks like you are Offline !!! Please check your internet connection.
-                </h1>
+                </h1>);
 
-        return restaurantList.length === 0 ? <Shimmer /> : (
+        return restaurantList && restaurantList.length === 0 ? <Shimmer /> : (
             <div className="body">
                     <div className="filter flex">
                         <div className="m-4 p-4">
@@ -39,22 +40,26 @@ const Body = () => {
 
                         </div>
 
-
                         <div className="m-4 p-4 flex items-center ">
                                 <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={
                                         () => {
-                                                console.log('btn clicked');
+                                                //console.log('btn clicked');
                                                 // filter logic here
                                                 const filteredList = restaurantList.filter(res => res.info.avgRating >= 4.2 );
 
-                                                console.log(filteredList);
+                                                //console.log(filteredList);
                                                 setRestaurantList(filteredList);
                                         }} 
                                         >
                                         Top Rated Restaurants</button>
                         </div>
 
-                        
+                        <div className="m-4 p-4 flex items-center ">
+                               <label className="p-2">UserName: </label>
+                                <input className="p-2 border border-black"
+                                value={loggedInUser}
+                                onChange={(e) => setUserName(e.target.value)} />
+                        </div>                        
                     </div>
 
 

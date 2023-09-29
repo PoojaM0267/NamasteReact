@@ -1,4 +1,4 @@
-import React, {lazy, Suspense}from "react";
+import React, {lazy, Suspense, useState, useEffect}from "react";
 import  ReactDOM from "react-dom/client";       
    
 import Header from "./components/Header";
@@ -8,9 +8,8 @@ import ContactUs from "./components/ContactUs";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-//import Grocery from "./components/Grocery";
-
-      
+import UserContext from "./utils/UserContext";
+     
 
         const resObj = {
                 resName: "KFC", 
@@ -52,11 +51,25 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
         const Grocery = lazy(() => import("./components/Grocery"));
 
         const AppLayout = () => {
+
+                const [userName, setUserName] = useState();
+
+                //authentication
+                useEffect(() => {
+                  // Make an API call and send username and password
+                  const data = {
+                    name: "Pooja Mahtha",
+                  };
+                  setUserName(data.name);
+                }, []);
+
                 return (
+                        <UserContext.Provider value = {{loggedInUser:userName, setUserName}}>
                         <div className="app">
                                 <Header />
                                 <Outlet />
                         </div>
+                        </UserContext.Provider>
                 )
         }
 
