@@ -1,6 +1,5 @@
 import React, {lazy, Suspense, useState, useEffect}from "react";
-import  ReactDOM from "react-dom/client";       
-   
+import  ReactDOM from "react-dom/client";      
 import Header from "./components/Header";
 import Body from "./components/Body";
 import About from "./components/About";
@@ -8,7 +7,10 @@ import ContactUs from "./components/ContactUs";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
 import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
      
 
         const resObj = {
@@ -64,12 +66,14 @@ import UserContext from "./utils/UserContext";
                 }, []);
 
                 return (
+                        <Provider store={appStore}>
                         <UserContext.Provider value = {{loggedInUser:userName, setUserName}}>
                         <div className="app">
                                 <Header />
                                 <Outlet />
                         </div>
                         </UserContext.Provider>
+                        </Provider>
                 )
         }
 
@@ -89,6 +93,11 @@ import UserContext from "./utils/UserContext";
                                 {
                                         path:"/contact",
                                         element: <ContactUs />
+                
+                                },
+                                {
+                                        path:"/cart",
+                                        element: <Cart />
                 
                                 },
                                 {
