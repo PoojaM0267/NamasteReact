@@ -18,7 +18,7 @@ const useRestaurantList = () => {
 
         setRestaurantList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log(restaurantList);
+        //console.log(restaurantList);
     };
 
     // const fetchData = async () => {
@@ -29,7 +29,7 @@ const useRestaurantList = () => {
     // }
 
 
-    return {restaurantList, filteredRestaurantList};
+    return {restaurantList, filteredRestaurantList, setFilteredRestaurant};
 }
 
 export default useRestaurantList;

@@ -12,7 +12,9 @@ const Body = () => {
 
         const [searchText, setSearchText] = useState("");
         
-        const {restaurantList, filteredRestaurantList} = useRestaurantList();
+        const {restaurantList, filteredRestaurantList , setFilteredRestaurant} = useRestaurantList();
+        //const {restaurantList} = useRestaurantList();
+        //const [filteredRestaurantList, setFilteredRestaurant] = useState([]);
         const onlineStatus = useOnlineStatus();
 
         const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
@@ -28,7 +30,7 @@ const Body = () => {
             <div className="body">
                     <div className="filter flex">
                         <div className="m-4 p-4">
-                                <input type="text" className="border border-solid border-black" value={searchText} 
+                                <input type="text" data-testid="searchInput" className="border border-solid border-black" value={searchText} 
                                 onChange={(e) => {
                                         setSearchText(e.target.value);
                                 }}/>
