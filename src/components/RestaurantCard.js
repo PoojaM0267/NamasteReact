@@ -17,6 +17,8 @@ const RestaurantCard = (props) => {
         aggregatedDiscountInfo,
       } = resData;
 
+      //console.log(resData);
+
 
 return (
         <div className="m-4 p-4 w-[300px] bg-gray-100 rounded-lg hover:bg-gray-200" >
