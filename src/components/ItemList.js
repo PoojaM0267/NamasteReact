@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({items}) => {
-console.log(items);
+//console.log(items);
 
 const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const handleAddItem = (item) => {
 return (
     <div>
         {items.map(item => (
-            <div key={item.card.info.id} className="p-2 m-2  border-gray-200 border-b-2 text-left"> 
+            <div data-testid="foodItems" key={item.card.info.id} className="p-2 m-2  border-gray-200 border-b-2 text-left"> 
             <div className="py-2 flex justify-between"> 
                 <div className="w-9/12">
                     <span> {item.card.info.name} </span> 

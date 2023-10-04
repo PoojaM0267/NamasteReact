@@ -15,7 +15,7 @@ const cartSlice = createSlice(
             },
             clearCart : (state, action) => {
                 state.items.length = 0;
-                console.log(current(state));
+                //console.log(current(state));
 
                 // state = []  will not work as it is not mutating the state but chnging the reference
                 //console.log(state); will not work as it not show

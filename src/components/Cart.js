@@ -21,7 +21,7 @@ const Cart = () => {
             onClick={handleClearCart}>Clear Cart</button>
            }
 
-            {cartItems.length === 0 && <h1>Add some items to Cart !!! </h1> }
+            {cartItems.length === 0 && <h1>Add some items to Cart !!!</h1> }
 
             <ItemList items={cartItems} />
         </div>

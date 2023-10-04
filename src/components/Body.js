@@ -12,9 +12,7 @@ const Body = () => {
 
         const [searchText, setSearchText] = useState("");
         
-        const {restaurantList, filteredRestaurantList , setFilteredRestaurant} = useRestaurantList();
-        //const {restaurantList} = useRestaurantList();
-        //const [filteredRestaurantList, setFilteredRestaurant] = useState([]);
+        const {restaurantList, filteredRestaurantList , setRestaurantList, setFilteredRestaurant} = useRestaurantList();
         const onlineStatus = useOnlineStatus();
 
         const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
@@ -50,7 +48,8 @@ const Body = () => {
                                                 const filteredList = restaurantList.filter(res => res.info.avgRating >= 4.2 );
 
                                                 //console.log(filteredList);
-                                                setRestaurantList(filteredList);
+                                                //setRestaurantList(filteredList);
+                                                setFilteredRestaurant(filteredList);
                                         }} 
                                         >
                                         Top Rated Restaurants</button>

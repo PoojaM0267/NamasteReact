@@ -26,10 +26,13 @@ it("Should render the Body Component with Search", async () => {
 
 });
 
-it("Should render the Body Component with Search iput results", async () => {
+it("Should render Restaurant cards with Search input results", async () => {
     await act(async () => render(<BrowserRouter>
      <Body />
     </BrowserRouter>));
+
+    const cardsBeforeClick = screen.getAllByTestId("resCard");
+    expect(cardsBeforeClick.length).toBe(20);
 
     const searchBtn = screen.getByRole("button", {name: "Search"});
 
@@ -40,7 +43,19 @@ it("Should render the Body Component with Search iput results", async () => {
     fireEvent.click(searchBtn);
 
     // screen should load search result cards
-    const cards = screen.getAllByTestId("resCard");
-    expect(cards.length).toBe(5);
+    const cardsAfterSearch = screen.getAllByTestId("resCard");
+    expect(cardsAfterSearch.length).toBe(5);
 
 });
+
+it("Should render 14 restaurant cards on click of Top Rated btn", async () => {
+    await act(async () => render(<BrowserRouter>
+        <Body />
+       </BrowserRouter>));
+
+       const topRatedBtn = screen.getByRole("button", {name: "Top Rated Restaurants"});  
+       fireEvent.click(topRatedBtn);
+       const topRatedRestcards = screen.getAllByTestId("resCard");
+       expect(topRatedRestcards.length).toBe(14);
+   
+})

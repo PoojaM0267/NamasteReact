@@ -29,7 +29,7 @@ const useRestaurantList = () => {
     // }
 
 
-    return {restaurantList, filteredRestaurantList, setFilteredRestaurant};
+    return {restaurantList, filteredRestaurantList, setRestaurantList, setFilteredRestaurant};
 }
 
 export default useRestaurantList;
